@@ -1,7 +1,7 @@
-package main
+package ParseDBA
 
 import (
-	"fmt"
+	//"fmt"
 	//    	"os"
 	//	"bytes"
 	//	"encoding/binary"
@@ -58,7 +58,7 @@ func XOR(ParA byte, ParB byte) byte {
 
 func (cn *ConnectInfo) ParseDBA(fileName string) error {
 
-	data, err := ioutil.ReadFile("1Cv7.DBA")
+	data, err := ioutil.ReadFile(fileName)
 	// Если во время считывания файла произошла ошибка
 	// ничего не делаем
 	if err != nil {
@@ -83,6 +83,7 @@ func (cn *ConnectInfo) ParseDBA(fileName string) error {
 	return err
 }
 
+/*
 func main() {
 
 	data, err := ioutil.ReadFile("1Cv7.DBA")
@@ -101,7 +102,7 @@ func main() {
 
 			b = b[:len(b)-size]
 		}
-	*/
+*/ /*
 	//fmt.Print(string(data))
 	fmt.Printf("Длина файла %d\n", len(data))
 	nlen := len(data)
@@ -129,3 +130,4 @@ func main() {
 	cnv := new(ConnectInfo)
 	cnv.ParseDBA("1Cv7.DBA")
 }
+*/
