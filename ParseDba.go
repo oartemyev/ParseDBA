@@ -8,16 +8,15 @@ import (
 	"bytes"
 	"io/ioutil"
 	"strings"
-
 	//	"encoding/binary"
-
-	//	"golang.org/x/net/html/charset"
 	"encoding/json"
 	//	"unicode/utf8"
 
+	//	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
 	"golang.org/x/text/transform"
+
 )
 
 //var SQLKey []byte = []byte("19465912879oiuxc ensdfaiuo3i73798kjl")
