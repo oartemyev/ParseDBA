@@ -55,7 +55,9 @@ func XOR(ParA byte, ParB byte) byte {
 	return Res
 }
 
-func (cn *ConnectInfo) ParseConnect(data string) (string, error) {
+func (cn *ConnectInfo) ParseConnect(data_ string) (string, error) {
+
+	data = []byte(data_)
 
 	var SQLKey []byte = []byte("19465912879oiuxc ensdfaiuo3i73798kjl")
 	nlen := len(data)
@@ -71,7 +73,7 @@ func (cn *ConnectInfo) ParseConnect(data string) (string, error) {
 	data = []byte(out)
 	err = json.Unmarshal(data, cn)
 
-	return data, err
+	return Connect, err
 }
 
 func (cn *ConnectInfo) ParseDBA(fileName string) error {
