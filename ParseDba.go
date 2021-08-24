@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"strings"
+
 	//	"encoding/binary"
 	"encoding/json"
 	//	"unicode/utf8"
@@ -16,7 +17,6 @@ import (
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
 	"golang.org/x/text/transform"
-
 )
 
 //var SQLKey []byte = []byte("19465912879oiuxc ensdfaiuo3i73798kjl")
@@ -57,21 +57,35 @@ func XOR(ParA byte, ParB byte) byte {
 
 func (cn *ConnectInfo) ParseConnect(data_ string) (string, error) {
 
-	data = []byte(data_)
+	// // btStream := []byte(data_)
 
-	var SQLKey []byte = []byte("19465912879oiuxc ensdfaiuo3i73798kjl")
-	nlen := len(data)
-	Connect := ""
-	for i := 0; i < nlen; i++ {
-		Connect = Connect + string(XOR(data[i], SQLKey[i%36]))
-	}
+	// // decoder := charmap.Windows1251.NewDecoder()
+	// // buf := bytes.NewBuffer([]byte{})
+	// // buf.Write(btStream)
 
+	// // reader := decoder.Reader(buf)
+	// // b, err := ioutil.ReadAll(reader)
+	// // if err != nil {
+	// // 	panic(err)
+	// // }
+	// // data_ = string(b)
+
+	// data := []byte(data_)
+
+	// var SQLKey []byte = []byte("19465912879oiuxc ensdfaiuo3i73798kjl")
+	// nlen := len(data)
+	// Connect := ""
+	// for i := 0; i < nlen; i++ {
+	// 	Connect = Connect + string(XOR(data[i], SQLKey[i%36]))
+	// }
+
+	Connect := data_
 	out := strings.Replace(Connect, "\",\"", "\":\"", -1)
 	out = strings.Replace(out, "\"},{\"", "\",\"", -1)
 	out = strings.Replace(out, "{{", "{", -1)
 	out = strings.Replace(out, "}}", "}", -1)
-	data = []byte(out)
-	err = json.Unmarshal(data, cn)
+	data := []byte(out)
+	err := json.Unmarshal(data, cn)
 
 	return Connect, err
 }
